@@ -7,5 +7,7 @@
         android:title="Añadir Profesor"/>
     <item  android:id="@+id/borrar"
         android:title="Borrar"/>
+    <item  android:id="@+id/ver"
+        android:title="Ver"/>
 
 </menu>

@@ -39,7 +39,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 BaseDeDatos bd = new BaseDeDatos(getApplicationContext());
                 bd.insertarProfesores(nombre.getText().toString(),Integer.parseInt(edad.getText().toString()),despacho.getText().toString()
-                        ,ciclo.getText().toString(),curso.getText().toString());
+                        ,ciclo.getText().toString().toLowerCase(),curso.getText().toString().toLowerCase());
 //vaciamos los edittext despues de insertar los datos
                 nombre.setText("");
                 ciclo.setText("");
@@ -73,6 +73,10 @@ public class Main2Activity extends AppCompatActivity {
             case R.id.borrar:
                 Intent z = new Intent(getApplicationContext(),Borrar.class);
                 startActivity(z);
+                return true;
+            case R.id.ver:
+                Intent p = new Intent(getApplicationContext(),Mostrar.class);
+                startActivity(p);
                 return true;
             default:
                 return false;

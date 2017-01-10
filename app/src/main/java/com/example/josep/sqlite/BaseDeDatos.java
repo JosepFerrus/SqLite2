@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static com.example.josep.sqlite.BaseDeDatos.CREATE_TABLE_ESTUDIANTE;
 import static com.example.josep.sqlite.BaseDeDatos.CREATE_TABLE_PROFESOR;
 import static com.example.josep.sqlite.BaseDeDatos.DROP_TABLE_ESTUDIANTE;
@@ -123,6 +125,61 @@ public class BaseDeDatos {
         Toast.makeText(context,"Ha sido borrado",Toast.LENGTH_SHORT).show();
     }
 
+    public ArrayList ver (ArrayList results, String tabla){
+
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT id, nombre FROM " + tabla,null);
+
+
+        while (cursor.moveToNext()) {
+            results.add(cursor.getString(0)+ " "+cursor.getString(1));
+        }
+
+        return results;
+    }
+
+    public ArrayList verCiclo (ArrayList results,String tabla, String ciclo){
+
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT id, nombre FROM " + tabla+ " WHERE "+CICLO +" = '"+ciclo+"'",null);
+
+
+        while (cursor.moveToNext()) {
+            results.add(cursor.getString(0)+ " "+cursor.getString(1));
+        }
+
+        return results;
+    }
+    public ArrayList verCurso (ArrayList results,String tabla, String curso){
+
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT id, nombre FROM " + tabla+ " WHERE "+CURSO +" = '"+curso+"'",null);
+
+
+        while (cursor.moveToNext()) {
+            results.add(cursor.getString(0)+ " "+cursor.getString(1));
+        }
+
+        return results;
+    }
+    public ArrayList verCicloYCurso (ArrayList results,String tabla, String ciclo,String curso ){
+
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT id, nombre FROM " + tabla+ " WHERE "+CICLO +" = '"+ciclo+"' AND "+CURSO +" = '"+curso+"'",null);
+
+
+        while (cursor.moveToNext()) {
+            results.add(cursor.getString(0)+ " "+cursor.getString(1));
+        }
+
+        return results;
+    }
+
+
 
     public void vacioTotal(Context context){
         try {
@@ -151,7 +208,7 @@ public class BaseDeDatos {
         @Override
         public void onCreate(SQLiteDatabase db) {
 
-//ccreamos las dos tablas de la base de datos
+          //creamos las dos tablas de la base de datos
             db.execSQL(CREATE_TABLE_ESTUDIANTE);
             db.execSQL(CREATE_TABLE_PROFESOR);
 

@@ -81,6 +81,10 @@ public class Borrar extends AppCompatActivity {
                 Intent z = new Intent(getApplicationContext(),Borrar.class);
                 startActivity(z);
                 return true;
+            case R.id.ver:
+                Intent p = new Intent(getApplicationContext(),Mostrar.class);
+                startActivity(p);
+                return true;
             default:
                 return false;
         }

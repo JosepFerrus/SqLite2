@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 BaseDeDatos bd = new BaseDeDatos(getApplicationContext());
-               bd.insertarEstudiante(nombre.getText().toString(),ciclo.getText().toString(),curso.getText().toString(),
+               bd.insertarEstudiante(nombre.getText().toString(),ciclo.getText().toString().toLowerCase(),curso.getText().toString().toLowerCase(),
                         parseInt(edad.getText().toString()),parseInt(nota.getText().toString()));
 // Vaciamos los edittext una vez hecho el insert
                 nombre.setText("");
@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.borrar:
                 Intent z = new Intent(getApplicationContext(),Borrar.class);
                 startActivity(z);
+                return true;
+            case R.id.ver:
+                Intent p = new Intent(getApplicationContext(),Mostrar.class);
+                startActivity(p);
                 return true;
             default:
                 return false;

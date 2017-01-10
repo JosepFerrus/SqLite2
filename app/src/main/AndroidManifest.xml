@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-        <activity android:name=".Borrar"></activity>
+        <activity android:name=".Borrar" />
+        <activity android:name=".Mostrar"></activity>
     </application>
 
 </manifest>
